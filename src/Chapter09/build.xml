@@ -1,0 +1,77 @@
+<project name="ManagerApplication" default="list" basedir=".">
+
+  <!-- Configure the context path for this application -->
+  <property name="path"     value="/Catalog"/>
+  <property name="build"     value="C:/dev"/>
+  <property name="file"     value="Catalog.war"/>
+
+  <!-- Configure properties to access the Manager application -->
+  <property name="url"      value="http://localhost:8080/manager"/>
+  <property name="username" value="tomcat"/>
+  <property name="password" value="tomcat"/>
+
+  <!-- Configure the custom Ant tasks for the Manager application -->
+  <taskdef name="deploy"    
+           classname="org.apache.catalina.ant.DeployTask"/>
+  <taskdef name="list"      
+           classname="org.apache.catalina.ant.ListTask"/>
+  <taskdef name="reload"    
+           classname="org.apache.catalina.ant.ReloadTask"/>
+  <taskdef name="resources" 
+           classname="org.apache.catalina.ant.ResourcesTask"/>
+  <taskdef name="roles"     
+           classname="org.apache.catalina.ant.RolesTask"/>
+  <taskdef name="start"     
+           classname="org.apache.catalina.ant.StartTask"/>
+  <taskdef name="stop"      
+           classname="org.apache.catalina.ant.StopTask"/>
+  <taskdef name="undeploy"  
+           classname="org.apache.catalina.ant.UndeployTask"/>
+  <taskdef name="jk2Generate"  
+           classname="org.apache.jk.config.WebXml2Jk"/>
+
+  <target name="jk2Generate" description="Generate JK2 Settings">
+    <jk2Generate 
+      docBase="C:/tomcat/webapps/tomcatBook" 
+      context="/tomcatBook"
+      host="localhost" />
+  </target>
+
+  <target name="deploy" description="Deploy web application">
+    <deploy url="${url}" username="${username}" password="${password}"
+            path="${path}" war="file:${build}/${file}"/>
+  </target>
+
+  <target name="list" description="List all web applications">
+    <list url="${url}" username="${username}" password="${password}"/>
+  </target>
+
+  <target name="reload" description="Reload web application">
+    <reload url="${url}" username="${username}" password="${password}"
+            path="${path}"/>
+  </target>
+
+  <target name="resources" description="List all JNDI resources">
+    <resources url="${url}" username="${username}" password="${password}"/>
+  </target>
+
+  <target name="roles" description="List all roles">
+    <roles url="${url}" username="${username}" password="${password}"/>
+  </target>
+
+  <target name="start" description="Start web application">
+    <start url="${url}" username="${username}" password="${password}"
+           path="${path}"/>
+  </target>
+
+  <target name="stop" description="Stop web application">
+    <stop url="${url}" username="${username}" password="${password}"
+          path="${path}"/>
+  </target>
+
+  <target name="undeploy" description="Undeploy web application">
+    <undeploy url="${url}" username="${username}" password="${password}"
+            path="${path}"/>
+  </target>
+ 
+</project>

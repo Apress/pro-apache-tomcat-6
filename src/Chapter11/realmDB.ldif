@@ -1,0 +1,76 @@
+# Define top-level entry
+dn: dc=mycompany,dc=com
+objectClass: dcObject
+objectClass: organization
+dc: mycompany
+o: mycompany
+
+# Define an entry to contain people
+# searches for users are based on this entry
+dn: ou=people,dc=mycompany,dc=com
+objectClass: organizationalUnit
+ou: people
+
+# Define a user entry for tomcat
+dn: uid=tomcat,ou=people,dc=mycompany,dc=com
+objectClass: inetOrgPerson
+uid: tomcat
+sn: tomcat
+cn: tomcat user
+userPassword: tomcat
+
+# Define a user entry for role1
+dn: uid=role1,ou=people,dc=mycompany,dc=com
+objectClass: inetOrgPerson
+uid: role1
+sn: role1
+cn: role1 user
+userPassword: tomcat
+
+# Define a user entry for both
+dn: uid=both,ou=people,dc=mycompany,dc=com
+objectClass: inetOrgPerson
+uid: both
+sn: both
+cn: both user
+userPassword: tomcat
+
+# Define a user entry for admin
+dn: uid=admin,ou=people,dc=mycompany,dc=com
+objectClass: inetOrgPerson
+uid: admin
+sn: admin
+cn: admin user
+#userPassword: admin
+userPassword: d033e22ae348aeb5660fc2140aec35850c4da997
+
+# Define an entry to contain LDAP groups
+# searches for roles are based on this entry
+dn: ou=groups,dc=mycompany,dc=com
+objectClass: organizationalUnit
+ou: groups
+
+# Define an entry for the "tomcat" role
+dn: cn=tomcat,ou=groups,dc=mycompany,dc=com
+objectClass: groupOfUniqueNames
+cn: tomcat
+uniqueMember: uid=tomcat,ou=people,dc=mycompany,dc=com
+uniqueMember: uid=both,ou=people,dc=mycompany,dc=com
+
+# Define an entry for the "role1" role
+dn: cn=role1,ou=groups,dc=mycompany,dc=com
+objectClass: groupOfUniqueNames
+cn: role1
+uniqueMember: uid=role1,ou=people,dc=mycompany,dc=com
+uniqueMember: uid=both,ou=people,dc=mycompany,dc=com
+
+# Define an entry for the "admin" role
+dn: cn=admin,ou=groups,dc=mycompany,dc=com
+objectClass: groupOfUniqueNames
+cn: admin
+uniqueMember: uid=admin,ou=people,dc=mycompany,dc=com
+
+
+
+
+

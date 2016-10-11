@@ -1,0 +1,34 @@
+[ req ]
+default_bits		= 1024
+distinguished_name	= req_distinguished_name
+attributes		= req_attributes
+
+[ req_distinguished_name ]
+countryName			= Country Name (2 letter code)
+countryName_default		= UK
+countryName_min			= 2
+countryName_max			= 2
+
+stateOrProvinceName		= State or Province Name (full name)
+stateOrProvinceName_default	= UK
+
+localityName			= Locality Name (eg, city)
+localityName_default		= Glasgow
+
+organizationName		= Organization Name (eg, company)
+organizationName_default	= Matt Co.
+
+organizationalUnitName		= Organizational Unit Name (eg, section)
+organizationalUnitName_default	= Editorial
+
+commonName			= Common Name (eg, YOUR name)
+commonName_default		= localhost
+commonName_max			= 64
+
+emailAddress			= Email Address
+emailAddress_max		= 40
+
+[ req_attributes ]
+challengePassword		= A challenge password
+challengePassword_min		= 4
+challengePassword_max		= 20

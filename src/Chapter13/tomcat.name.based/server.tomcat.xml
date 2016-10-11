@@ -1,0 +1,56 @@
+<Server port="8005" shutdown="SHUTDOWN">
+  <Service name="Virtual Hosting Tomcat">
+
+    <Connector port="8080"
+               maxThreads="150" minSpareThreads="25" maxSpareThreads="75"
+               enableLookups="false" redirectPort="8443" acceptCount="100"
+               debug="0" connectionTimeout="20000" 
+               disableUploadTimeout="true" />
+
+    <Engine name="Catalina" defaultHost="www.catalinabook.com">
+
+      <!-- Global logger unless overridden at lower levels -->
+      <!-- Tomcat 5.0.x only -->
+      <Logger className="org.apache.catalina.logger.FileLogger"
+              prefix="catalina_log." suffix=".txt"
+              timestamp="true"/>
+
+      <Host name="www.catalinabook.com" debug="0" 
+            appBase="C:/home/sites/catalinabook.com/webapps" 
+            unpackWARs="true">
+
+        <Valve className="org.apache.catalina.valves.AccessLogValve"
+               directory="C:/home/sites/catalinabook.com/logs" 
+               prefix="catalinabook.com.access."
+               suffix=".log"
+               pattern="common"/>
+
+      </Host>
+
+      <!-- The other two virtual hosts go here -->
+      <Host name="www.jasperbook.com" debug="0" 
+            appBase="C:/home/sites/jasperbook.com/webapps" 
+            unpackWARs="true">
+
+        <Valve className="org.apache.catalina.valves.AccessLogValve"
+               directory="C:/home/sites/jasperbook.com/logs" 
+               prefix="jasperbook.com.access."
+               suffix=".log"
+               pattern="common"/>
+
+      </Host>
+
+      <Host name="www.tomcatbook.com" debug="0" 
+            appBase="C:/home/sites/tomcatbook.com/webapps" 
+            unpackWARs="true">
+
+        <Valve className="org.apache.catalina.valves.AccessLogValve"
+               directory="C:/home/sites/tomcatbook.com/logs" 
+               prefix="tomcatbook.com.access."
+               suffix=".log"
+               pattern="common"/>
+
+      </Host>
+    </Engine>
+  </Service>
+</Server>

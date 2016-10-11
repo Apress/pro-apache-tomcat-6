@@ -1,0 +1,5 @@
+The three directories contain the appropriate configuration 
+files for Tomcat and Apache. The applications.zip file
+contains the directory structures for the three web applications.
+Extract these files to a convenient place that is not your
+CATALINA_HOME directory.
